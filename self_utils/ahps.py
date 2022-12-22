@@ -4,6 +4,48 @@ import cartopy.crs as ccrs
 
 
 def read_ahps(ahps_filename):
+
+    """
+    Read and process the AHPS (Advanced Hydrologic Prediction Service) dataset from a given file. The AHPS dataset is
+    transformed to Plate Carree projection and invalid observation values are replaced with NaN.
+
+            Parameters
+            ----------
+            ahps_filename : str
+                Filename for the AHPS dataset.
+
+            Returns
+            -------
+            lon_platecarre : numpy.ndarray
+                Longitude values in Plate Carree projection.
+
+            lat_platecarre : numpy.ndarray
+                Latitude values in Plate Carree projection.
+
+            obs : numpy.ndarray
+                Observation values from the AHPS dataset, with invalid values replaced with NaN and converted to millimeters.
+
+        Example
+        --------
+        >>> read_ahps("my_ahps_dataset.nc")
+        (array([[-180., -178., ...,  178.,  180.],
+                [-180., -178., ...,  178.,  180.],
+                ...,
+                [-180., -178., ...,  178.,  180.],
+                [-180., -178., ...,  178.,  180.]]),
+         array([[-90., -90., ..., -90., -90.],
+                [-88., -88., ..., -88., -88.],
+                ...,
+                [ 88.,  88., ...,  88.,  88.],
+                [ 90.,  90., ...,  90.,  90.]]),
+         array([[nan, nan, ..., nan, nan],
+                [nan, nan, ..., nan, nan],
+                ...,
+                [nan, nan, ..., nan, nan],
+                [nan, nan, ..., nan, nan]]))
+
+    """
+
     ahps = xr.open_dataset(ahps_filename)
     crs = ahps["crs"]
     lon = ahps.variables["x"][:]

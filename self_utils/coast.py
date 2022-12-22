@@ -6,7 +6,38 @@ import cartopy.crs as ccrs
 from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 
 
-def plot_coast(axes):
+# def plot_coast(axes):
+def plot_coast(axes: cartopy.mpl.geoaxes.GeoAxes) -> None:
+    """
+    Plot natural features and gridlines on a map using Cartopy.
+
+    Parameters
+    ----------
+    axes : cartopy.mpl.geoaxes.GeoAxes
+        The axes object to plot on.
+
+    Returns
+    -------
+    None
+
+    Example
+    --------
+    >>> import matplotlib.pyplot as plt
+    >>> import cartopy.crs as ccrs
+
+    >>> #Set up the figure and axes
+    >>> fig, ax = plt.subplots(1, 1, figsize=(10, 10))
+
+    >>> #Set the projection for the axes
+    >>> ax.projection = ccrs.PlateCarree()
+
+    >>> #Call the plot_coast function
+    >>> plot_coast(ax)
+
+    >>> #Show the plot
+    >>> plt.show()
+
+    """
     countries = cfeature.NaturalEarthFeature(
         scale="50m", category="cultural", name="admin_0_countries", facecolor="none"
     )
