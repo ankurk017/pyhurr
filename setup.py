@@ -1,23 +1,21 @@
-import setuptools
+from setuptools import setup
 
-with open("README.md", "r") as fn:
-    long_description = fn.read()
-
-setuptools.setup(
-    name="pyhurr",
-    version="0.1.0",
-    author="Ankur Kumar, NASA IMPACT and The University of Alabama in Huntsville, UAH, Huntsville, Alabama",
-    author_email="ankurk017@gmail.com",
-    description="A python package for reading ahps data and plot coastlines .",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://github.com/ankurk017/pyhurr",
-    packages=setuptools.find_packages(),
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: GNU General Public License",
-        "Operating System :: OS Independent",
-    ],
-    python_requires='>=3.0',
-    install_requires=["cartopy", "matplotlib", "numpy", "xarray"]
+setup(
+    # Needed to silence warnings
+    name='selfutils',
+    url='https://github.com/ankurk017/pyhurr',
+    author='Ankur Kumar',
+    author_email='ankurk017@gmail.com',
+    # Needed to actually package something
+    packages=['self_utils'],
+    # Needed for dependencies
+    install_requires=["cartopy", "matplotlib", "numpy", "xarray"],
+    # *strongly* suggested for sharing
+    version='0.1',
+    license='MIT',
+    description='An example of a python package from pre-existing code',
+    # We will also need a readme eventually (there will be a warning)
+    long_description=open('README.rst').read(),
+    # if there are any scripts
+    scripts=['scripts/hello.py'],
 )

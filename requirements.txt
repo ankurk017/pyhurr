@@ -1,5 +1,0 @@
-Cartopy==0.18.0
-matplotlib==3.3.2
-numpy==1.19.2
-setuptools==58.0.4
-xarray==0.18.0
